@@ -104,11 +104,11 @@ def insertion_sort(data: LinkedList):
     while current_node:
         compare_node = data.head
         prev_compare_node = None # before compare
-        print(f'current node: {current_node.data}')
+        # print(f'current node: {current_node.data}')
         while current_node != compare_node:
-            print(f'compare node: {compare_node.data}')
+            # print(f'compare node: {compare_node.data}')
             if current_node < compare_node:
-                print(f'current node is smaller than compare node: {current_node.data} < {compare_node.data}')
+                # print(f'current node is smaller than compare node: {current_node.data} < {compare_node.data}')
                 prev_node.next = current_node.next
                 next_prev_node = prev_node
                 current_node.next = compare_node
@@ -116,13 +116,9 @@ def insertion_sort(data: LinkedList):
                     prev_compare_node.next = current_node
                 else:
                     data.head = current_node
-
-                print(data.head.data, data.head.next.data, data.head.next.next.data, data.head.next.next.next.data, data.head.next.next.next.next.data, data.head.next.next.next.next.next.data, data.head.next.next.next.next.next.next.data)
-
-                # data.print_list()
                 break
-            else:
-                print(f'current node is bigger than compare node: {current_node.data} > {compare_node.data}')
+            # else:
+                # print(f'current node is bigger than compare node: {current_node.data} > {compare_node.data}')
 
             prev_compare_node, compare_node = compare_node, compare_node.next
 
