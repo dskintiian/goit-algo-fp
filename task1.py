@@ -124,15 +124,32 @@ def insertion_sort(data: LinkedList):
 
         current_node, next_node, prev_node, next_prev_node = next_node, next_node.next if next_node else None, next_prev_node, next_prev_node.next
 
+def merge_sorted_lists(list1: LinkedList, list2: LinkedList):
+    if list1.head < list2.head:
+        dest_list, source_list = list1, list2
+    else:
+        dest_list, source_list = list2, list1
+
+    source_cur_node = source_list.head
+    dest_cur_node = dest_list.head
+    while source_cur_node:
+        if dest_cur_node.next is None or source_cur_node < dest_cur_node.next:
+            dest_list.insert_after(dest_cur_node, source_cur_node.data)
+            source_cur_node = source_cur_node.next
+        else:
+            dest_cur_node = dest_cur_node.next
+
+    return dest_list
+
 
 linked_list = LinkedList()
-linked_list.insert_at_beginning(5)
+linked_list.insert_at_beginning(15)
 linked_list.insert_at_beginning(1)
-linked_list.insert_at_beginning(3)
+linked_list.insert_at_beginning(31)
 linked_list.insert_at_end(10)
 linked_list.insert_at_beginning(6)
 linked_list.insert_at_beginning(2)
-linked_list.insert_at_beginning(4)
+linked_list.insert_at_beginning(14)
 linked_list.insert_at_end(8)
 linked_list.insert_at_end(9)
 linked_list.insert_at_end(12)
@@ -150,3 +167,13 @@ linked_list.print_list()
 print('Sorted list:')
 insertion_sort(linked_list)
 linked_list.print_list()
+
+second_linked_list = LinkedList()
+second_linked_list.insert_at_beginning(3)
+second_linked_list.insert_at_beginning(4)
+second_linked_list.insert_at_beginning(5)
+insertion_sort(second_linked_list)
+second_linked_list.print_list()
+
+print('Merged sorted list:')
+merge_sorted_lists(linked_list, second_linked_list).print_list()
