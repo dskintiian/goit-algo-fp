@@ -1,9 +1,7 @@
 import uuid
-import webcolors
 import networkx as nx
 import matplotlib.pyplot as plt
-import heapq
-from random import sample
+
 from collections import deque
 
 class Node:
